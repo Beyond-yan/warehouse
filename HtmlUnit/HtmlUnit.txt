@@ -1,0 +1,40 @@
+百事通项目的 调用高德API抓取数据
+
+HTMLUnit Java页面分析工具 没界面的浏览器 (需要HTMLUnit jar支持)
+	https://www.cnblogs.com/zhjsll/p/4269576.html
+  			webClient = new WebClient(BrowserVersion.CHROME);
+            // 启动JS
+            webClient.getOptions().setJavaScriptEnabled(true);
+            int count = Integer.MAX_VALUE;
+            StringBuffer url = new StringBuffer();
+            url.append(ConfigUtil.getValueByKey("remote_local_url"))
+                    .append("?startPosition=")
+                    .append(startPosition)
+                    .append("&endPosition=")
+                    .append(endPosition)
+                    .append("&type=")
+                    .append(type)
+                    .append("&startCity=")
+                    .append(URLEncoder.encode(startCity, "UTF-8"))
+                    .append("&endCity=")
+                    .append(URLEncoder.encode(endCity, "UTF-8"));
+            HtmlPage page = webClient.getPage(url.toString());
+            System.out.println(page.asXml());
+            model.addAttribute("html", page.getElementById("panel").asXml());
+            WebClient web = new WebClient(指定内核)
+            HtmlPage page = web.getPage(指定url)
+            page.getOptions
+
+
+    --- webClient.waitForBackgroundJavaScript(30000);//异步JS执行需要耗时,所以这里线程要阻塞30秒,等待异步JS执行结束
+        webClient.getOptions().setThrowExceptionOnScriptError(false);//当JS执行出错的时候是否抛出异常, 这里选择不需要
+        webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);//当HTTP的状态非200时是否抛出异常, 这里选择不需要
+        webClient.getOptions().setActiveXNative(false);
+        webClient.getOptions().setCssEnabled(false);//是否启用CSS, 因为不需要展现页面, 所以不需要启用
+        webClient.getOptions().setJavaScriptEnabled(true); //很重要，启用JS
+        webClient.setAjaxController(new NicelyResynchronizingAjaxController());//很重要，设置支持AJAX
+           
+    *普通的通过url抓取网页的方式 url.openConnection 只能抓取出里面的静态内容 对于页面中的动态请求来的数据抓不出来 如:ajax  
+    *浏览器通过执行异步JS请求，将获取到的动态数据，渲染到最初的document页面中，然后展示网页。而对于这部分需要执行JS代码获取的数据，httpClient就显得无能为力了
+    *HtmlUnit就是这么一个程序库，用来做出了界面展示以外所有的异步工作。由于没有了展示这一块耗时的工作，HtmlUnit加载完成一个完整的网页要比实际的浏览器块多了。并且根据不同配置
+    *HtmlUnit可以模拟市面上常用的浏览器如Chrome、Firefox、IE浏览器等。 

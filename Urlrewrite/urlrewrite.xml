@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+
+<!-- Configuration file for UrlRewriteFilter http://www.tuckey.org/urlrewrite/ -->
+<urlrewrite>
+
+	<!-- <rule> <note> The rule means that requests to /test/status/ will be 
+		redirected to /rewrite-status the url will be rewritten. </note> <from>/test/status/</from> 
+		<to type="redirect">%{context-path}/rewrite-status</to> </rule> <outbound-rule> 
+		<note> The outbound-rule specifies that when response.encodeURL is called 
+		(if you are using JSTL c:url) the url /rewrite-status will be rewritten to 
+		/test/status/. The above rule and this outbound-rule means that end users 
+		should never see the url /rewrite-status only /test/status/ both in thier 
+		location bar and in hyperlinks in your pages. </note> <from>/rewrite-status</from> 
+		<to>/test/status/</to> </outbound-rule> -->
+
+	
+	<rule>
+
+		<from>^(.*)/(.*)test(.*).html</from>
+
+		<to>/common/error2.jsp</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/index.html</from>
+
+		<to>/index.do?action=home</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/index/CQNews.html</from>
+
+		<to>/index.do?action=getCQNews</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/index/RCScroller.html</from>
+
+		<to>/index.do?action=getRCScroller</to>
+
+	</rule>
+
+	<!-- <rule> <from>^/cqjw/72057594037927936/index.html</from> <to>/index.do?action=home</to> 
+		</rule> -->
+
+	<rule>
+
+		<from>^/articles/(.*)/(.*).html</from>
+
+		<to>/textNews.do?action=getTextNewsDetail&amp;newsID=$2&amp;programType=$1</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/articleList/(.*)_(.*).html</from>
+
+		<to>/textNews.do?action=getCQTrafficNewsList&amp;curpage=$2&amp;programType=$1</to>
+
+	</rule>
+	<rule>
+
+		<from>^/articleList2/(.*)_(.*).html</from>
+
+		<to>/textNews.do?action=getCQTrafficNewsList&amp;curpage=$2&amp;programType=$1</to>
+
+	</rule>
+	<rule>
+
+		<from>^/govdocument/(.*)_(.*).html</from>
+
+		<to>/govDocument.do?action=jumpToGocDocumentList&amp;pageIndex=$2</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/commentation/(.*)_(.*).html</from>
+
+		<to>/textNews.do?action=validateIsCommend&amp;newsID=$1&amp;flag=$2</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/commented/(.*)/(.*).html</from>
+
+		<to>/textNews.do?action=addCommend&amp;newsID=$2&amp;programType=$1</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/photoNews/(.*).html</from>
+
+		<to>/PhotosNews.do?action=getPhotosInfoList&amp;photosNewsID=$1</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/photoNewsList.html</from>
+
+		<to>/PhotosNews.do?action=getPhotosNewsList</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/yearbookList.html</from>
+
+		<to>/magazineNews.do?action=getYearbookList</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/subjectNewsList/_(.*).html</from>
+
+		<to>/subjectNews.do?action=getSubjectNewsList&amp;curpage=$1</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/magazines/contents/(.*).html</from>
+
+		<to>/magazineNews.do?action=getContent&amp;contentID=$1</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/magazines/download/(.*)</from>
+
+		<to>/magazineNews.do?action=downloadMagazine&amp;magazineURL=$1</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/magazines/default.html</from>
+
+		<to>/magazineNews.do?action=getMagazineNews</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/magazines/(.*).html</from>
+
+		<to>/magazineNews.do?action=getMagazineNews&amp;magazineNum=$1</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/videoNews/(.*).html</from>
+
+		<to>/videoNews.do?action=showVideo&amp;newsID=$1</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/videoNewsList.html</from>
+
+		<to>/videoNews.do?action=getVideoNewsList</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/mailbox.html</from>
+
+		<to>/leaderMail.do?action=getLeaderMailList</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/interviews/list_(.*).html</from>
+
+		<to>/onlineinterview.do?action=getOnlineInterviewList&amp;curpage=$1</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/interviews/(.*).html</from>
+
+		<to>/onlineinterview.do?action=getGuestInfo&amp;interviewId=$1</to>
+
+	</rule>
+	
+	<rule>
+		<from>^/interviewsplan/(.*).html</from>
+		<to>/onlineinterview.do?action=getInterviewsPlanList&amp;interviewId=$1</to>
+	</rule>
+
+	<rule>
+
+		<from>^/topics/list_(.*).html</from>
+
+		<to>/communication.do?action=getTopicList&amp;curpage=$1</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/topics/saveOpinion.html</from>
+
+		<to>/communication.do?action=insertOpinion</to>
+
+	</rule>
+	
+	<rule>
+
+		<from>^/topics/(.*).html</from>
+
+		<to>/communication.do?action=getTopicDetails&amp;topicID=$1</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/topics/(.*)_(.*).html</from>
+
+		<to>/communication.do?action=getTopicDetails&amp;topicID=$1&amp;curpage=$2</to>
+
+	</rule>
+
+	
+
+	<rule>
+
+		<from>^/organizations/index.html</from>
+
+		<to>/organization.do?action=getOrganizationInfo</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/organizations/(.*).html</from>
+
+		<to>/organization.do?action=getOrganizationInfo&amp;newsId=$1</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/leaders/index.html</from>
+
+		<to>/leader.do?action=getLeaderList</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/leaders/(.*)_(.*).html</from>
+
+		<to>/leader.do?action=getLeaderList&amp;leaderId=$1&amp;curpage=$2</to>
+
+	</rule>
+
+
+	<!-- <rule> <from>^/openCatalog/details.html?url=(.*)</from> <to>/opencatalog.do?action=initPublishCatalog&amp;initURL=$1</to> 
+		</rule> -->
+
+	<rule>
+
+		<from>^/openCatalog/index.html</from>
+
+		<to>/opencatalog.do?action=initPublishCatalog</to>
+
+	</rule>
+	
+	<rule>
+
+		<from>^/openCatalog/init_(.*).html</from>
+
+		<to>/opencatalog.do?action=initPublishCatalog&amp;initURL=$1</to>
+
+	</rule>
+	
+	<rule>
+		<!--网站导航跳转 -->
+		<from>^/openCatalog/jump_(.*).html</from>
+
+		<to>/opencatalog.do?action=initPublishCatalog&amp;jumpLabel=$1</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/openCatalog/menu.html</from>
+
+		<to>/opencatalog.do?action=leftMenu</to>
+
+	</rule>
+	
+	<!-- 首页导航 交通政务信息的链接处理 -->
+	<rule>
+
+		<from>^/openCatalog/new/(.*).html</from>
+
+		<to>/opencatalog.do?action=getTextNewsDetail&amp;newsID=$1&amp;news=1</to>
+
+	</rule>
+	
+	
+	<rule>
+
+		<from>^/openCatalog/(.*).html</from>
+
+		<to>/opencatalog.do?action=getTextNewsDetail&amp;newsID=$1</to>
+
+	</rule>
+	
+	
+	<rule>
+
+		<from>^/openCatalogList/(.*)_(.*).html</from>
+
+		<to>/opencatalog.do?action=getCatalogList&amp;curpage=$2&amp;Id=$1</to>
+	</rule>
+
+	<rule>
+
+		<from>^/questionaires/results/(.*).html</from>
+
+		<to>/Questionaire.do?action=questionaireSts&amp;QTEID=$1</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/questionaires/submits/(.*).html</from>
+
+		<to>/Questionaire.do?action=saveAnswers&amp;QTEID=$1</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/questionaires/default.html</from>
+
+		<to>/Questionaire.do?action=questionList</to>
+
+	</rule>
+	
+	<!-- by H2603045 -->
+	<rule>
+
+		<from>^/questionaires/list_(.*).html</from>
+
+		<to>/Questionaire.do?action=getQuestionaireList&amp;curpage=$1</to>
+
+	</rule>
+
+	<rule>
+
+		<from>^/questionaires/(.*).html</from>
+
+		<to>/Questionaire.do?action=questionList&amp;QTEID=$1</to>
+
+	</rule>
+	
+	
+	 <!--H2602975   2014-09-23-->
+	<rule>
+
+		<from>^/vedioMoreList/(.*)_(.*).html</from>
+
+		<to>/videoNews.do?action=getVideoAllList&amp;curpage=$2&amp;programType=$1</to>
+
+	</rule>
+	
+	<!-- by H2603045 -->
+	<rule>
+
+		<from>^/searchnewslist/(.*)_(.*).html</from>
+		<to>/textNews.do?action=getSearchNewsList&amp;curpage=$2&amp;programType=$1</to>
+
+	</rule>
+	
+	<!-- 搜索文件详情 by H2603045 -->
+	<rule>
+
+		<from>^/searches/(.*)/(.*).html</from>
+
+		<to>/textNews.do?action=getTextSearchDetail&amp;newsID=$2&amp;programType=$1</to>
+
+	</rule>
+	
+		<!-- 搜索文件详情 by H2603045 -->
+	<rule>
+
+		<from>^/getAllPhotosNewsList/(.*)_(.*).html</from>
+
+		<to>/PhotosNews.do?action=getAllPhotosNewsList&amp;pageIndex=$2&amp;limitCount=$1</to>
+
+	</rule>
+
+	<!-- INSTALLATION in your web.xml add... <filter> <filter-name>UrlRewriteFilter</filter-name> 
+		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class> 
+		<init-param> <param-name>logLevel</param-name> <param-value>WARN</param-value> 
+		</init-param> </filter> <filter-mapping> <filter-name>UrlRewriteFilter</filter-name> 
+		<url-pattern>/*</url-pattern> </filter-mapping> EXAMPLES Redirect one url 
+		<rule> <from>/some/old/page.html</from> <to type="redirect">/very/new/page.html</to> 
+		</rule> Redirect a directory <rule> <from>/some/olddir/(.*)</from> <to type="redirect">/very/newdir/$1</to> 
+		</rule> Clean a url <rule> <from>/products/([0-9]+)</from> <to>/products/index.jsp?product_id=$1</to> 
+		</rule> eg, /products/1234 will be passed on to /products/index.jsp?product_id=1234 
+		without the user noticing. Browser detection <rule> <condition name="user-agent">Mozilla/[1-4]</condition> 
+		<from>/some/page.html</from> <to>/some/page-for-old-browsers.html</to> </rule> 
+		eg, will pass the request for /some/page.html on to /some/page-for-old-browsers.html 
+		only for older browsers whose user agent srtings match Mozilla/1, Mozilla/2, 
+		Mozilla/3 or Mozilla/4. Centralised browser detection <rule> <condition name="user-agent">Mozilla/[1-4]</condition> 
+		<set type="request" name="browser">moz</set> </rule> eg, all requests will 
+		be checked against the condition and if matched request.setAttribute("browser", 
+		"moz") will be called. -->
+
+</urlrewrite>
+

@@ -1,0 +1,5 @@
+  <servlet>
+            <servlet-name>initServlet</servlet-name>
+            <servlet-class>com.foxconn.servlet.InitServlet</servlet-class>
+            <load-on-startup>0</load-on-startup>
+    </servlet>

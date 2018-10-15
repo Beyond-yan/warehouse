@@ -1,0 +1,6 @@
+ xmlns:task="http://www.springframework.org/schema/task" xsi:schemaLocation="  		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">	
+
+<!-- spring的task任务  识别@Scheduled注解 com.foxconn.util.spiderTimer-->
+    <task:annotation-driven scheduler="qbScheduler" mode="proxy"/> 
+    <task:scheduler  id="qbScheduler" pool-size="10"/>
+	
