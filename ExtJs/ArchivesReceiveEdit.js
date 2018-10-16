@@ -96,7 +96,7 @@ var ArchivesReceiveEdit = function(archiveId,proName,defId,isshow,callback) {
 									id : 'sentStoredsnConfigId',
 									fieldLabel : '编号办法',
 									hiddenName : 'snConfigId',
-									allowBlank : true ,
+									allowBlank : true ,  --不做表单的非空验证
 									xtype : 'combo',
 									editable : false,
 									mode : 'local',
@@ -162,7 +162,7 @@ var ArchivesReceiveEdit = function(archiveId,proName,defId,isshow,callback) {
 								
 								fieldLabel : '新编号',
 								id : 'archivesNoNew',
-								allowBlank : true ,
+								allowBlank : true , --不做表单的非空验证
 								name:'archives.archivesNoNew'
 							
 						},{
